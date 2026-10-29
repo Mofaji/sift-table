@@ -1,0 +1,57 @@
+table _Measures
+	lineageTag: bac169a2-5dbe-5e17-bb17-592409267c28
+
+	/// Number of orders in context. One row of Orders is one order.
+	measure 'Order Count' = COUNTROWS(Orders)
+		formatString: #,0
+		lineageTag: 79770145-9053-5727-9c01-86a71f4555a3
+
+	/// Units sold across the orders in context.
+	measure 'Total Units' = SUM(Orders[Units])
+		formatString: #,0
+		lineageTag: 02e2d280-c246-574e-a1d6-8db2d13e313f
+
+	/// Revenue after discount, in USD.
+	measure 'Total Revenue' = SUM(Orders[Revenue])
+		formatString: \$#,0
+		lineageTag: 599905d7-fff7-515e-8ea6-4248c49a8410
+
+	/// Revenue times each order's margin. Bound to the Sift Table as a measure column, so its filter narrows the table only.
+	measure 'Gross Profit' = SUMX(Orders, Orders[Revenue] * Orders[Margin %])
+		formatString: \$#,0
+		lineageTag: bf13fea4-9833-5489-a476-1e8770a8f586
+
+	/// Gross Profit over Total Revenue, weighted by revenue.
+	measure 'Gross Margin %' = DIVIDE([Gross Profit], [Total Revenue])
+		formatString: 0.0%
+		lineageTag: b48677bc-49e5-59fe-958d-257ab3035d2d
+
+	/// Mean days from order to delivery, over delivered and returned orders only.
+	measure 'Avg Delivery Days' = AVERAGE(Orders[Delivery Days])
+		formatString: 0.0
+		lineageTag: 316308d4-7296-57fb-b1d2-72a31c3d579d
+
+	/// Share of orders in context whose status is Returned.
+	measure 'Return Rate %' = DIVIDE(CALCULATE([Order Count], KEEPFILTERS(Orders[Status] = "Returned")), [Order Count])
+		formatString: 0.0%
+		lineageTag: ba157fa4-dcae-596c-8297-0c4e0a2ed7b7
+
+	/// Hex colour for the order's status, blank when more than one status is in context. The Sift Table colours its Status pills with it (Specific column > Colour from field); it is bound but hidden.
+	measure 'Status Colour' = SWITCH(SELECTEDVALUE(Orders[Status]), "Delivered", "#0F8F4F", "Shipped", "#3159C9", "Processing", "#B7791F", "Returned", "#D2453F", "Cancelled", "#7D8C84")
+		lineageTag: 05030588-0e4b-5835-808a-e29d0383e11e
+
+	column Placeholder
+		dataType: string
+		isHidden
+		lineageTag: 0a292a6e-edce-5037-bc69-bd29c3807325
+		summarizeBy: none
+		sourceColumn: [Placeholder]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = ROW("Placeholder", BLANK())
+
+	annotation PBI_Id = b582f3ce9fd65634b599dc61df992f28
+

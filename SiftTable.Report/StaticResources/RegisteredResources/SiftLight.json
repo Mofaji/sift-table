@@ -1,0 +1,50 @@
+{
+  "name": "SiftLight.json",
+  "dataColors": [
+    "#2BB673",
+    "#0F8F4F",
+    "#7FD6A4",
+    "#1F6F8B",
+    "#F2A541",
+    "#8A6FDF",
+    "#D2453F",
+    "#3E8E7E"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#0F1A14",
+  "tableAccent": "#2BB673",
+  "maximum": "#2BB673",
+  "minimum": "#D2453F",
+  "null": "#7D8C84",
+  "textClasses": {
+    "label": {
+      "color": "#45574D",
+      "fontSize": 9,
+      "fontFace": "Segoe UI"
+    },
+    "callout": {
+      "color": "#0F1A14",
+      "fontSize": 26,
+      "fontFace": "Segoe UI",
+      "fontWeight": "bold"
+    },
+    "title": {
+      "color": "#0F1A14",
+      "fontSize": 12,
+      "fontFace": "Segoe UI",
+      "fontWeight": "bold"
+    },
+    "header": {
+      "color": "#0F1A14",
+      "fontSize": 11,
+      "fontFace": "Segoe UI",
+      "fontWeight": "semibold"
+    },
+    "largeTitle": {
+      "color": "#0F1A14",
+      "fontSize": 16,
+      "fontFace": "Segoe UI",
+      "fontWeight": "bold"
+    }
+  }
+}

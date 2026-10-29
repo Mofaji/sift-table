@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "SiftTable"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "efc27150-99dc-50d6-b7dc-773747a1ddbd"
+  }
+}
