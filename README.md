@@ -67,6 +67,8 @@ The demo is one page, **Live demo**, with the table on the whole canvas. Product
 ## Good to know
 
 - Only model columns can filter the report. A filter on a measure narrows the table only.
+- Cells follow the model's format, so a `$#,0` column shows each row rounded. The totals row, Copy rows and Export CSV all use the exact values, so a SUM in Excel matches the totals row. Copied and exported numbers come through plain, such as `0.437` for 44%.
+- Set **Total** to None for rates and percentages. A row average is not the rate of the total, so the demo leaves Margin % without one.
 - A date column needs the Date or Date/Time data type to get the date filter. With auto date/time on, pick the plain field, not **Date Hierarchy**.
 - Some organisations block custom visuals that do not come from AppSource. That is an admin setting in the Power BI tenant.
 

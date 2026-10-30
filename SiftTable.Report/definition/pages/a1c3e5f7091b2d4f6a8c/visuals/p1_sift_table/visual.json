@@ -474,7 +474,7 @@
             "aggregation": {
               "expr": {
                 "Literal": {
-                  "Value": "'avg'"
+                  "Value": "'none'"
                 }
               }
             },
